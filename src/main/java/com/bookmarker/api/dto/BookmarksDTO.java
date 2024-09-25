@@ -11,9 +11,9 @@ import java.util.List;
 
 @Setter
 @Getter
-public class BookmarksDTO {
+public class BookmarksDTO<T> {
     @JsonUnwrapped
-    private List<Bookmark> data;
+    private List<T> data;
     private long totalElements;
     private int totalPages;
     private int currentPage;
@@ -27,7 +27,7 @@ public class BookmarksDTO {
     private boolean hasNext;
     private boolean hasPrevious;
 
-    public BookmarksDTO(Page<Bookmark> bookmarkPage) {
+    public BookmarksDTO(Page<T> bookmarkPage) {
         this.setData(bookmarkPage.getContent());
         this.setTotalElements(bookmarkPage.getTotalElements());
         this.setTotalPages(bookmarkPage.getTotalPages());
