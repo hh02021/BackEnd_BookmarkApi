@@ -120,6 +120,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<!-- jar 파일명 고정 이거 안하면 artifactId,version 조합으로 만들어줌-->
+		<finalName>springboot-nextjs-backend</finalName>
 	</build>
 
 </project>
