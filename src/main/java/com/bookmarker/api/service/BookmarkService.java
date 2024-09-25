@@ -22,14 +22,28 @@ public class BookmarkService {
     private final BookmarkRepository repository;
     private final BookmarkMapper mapper;
 
-    @Transactional(readOnly = true)
+  /*  @Transactional(readOnly = true)
     public BookmarksDTO<?> getBookmarks(Integer page) {
         int pageNo = page < 1 ? 0 : page - 1;
         Pageable pageable = PageRequest.of(pageNo, 10, Sort.Direction.DESC, "id");
         Page<BookmarkDTO> bookmarkPage = repository.findAll(pageable)
-                //.map(bookmark -> mapper.toDTO(bookmark));
-                .map(mapper::toDTO);
+                //.map(bookmark -> mapper.toDTO(bookmark)); //Lambda Expression
+                .map(mapper::toDTO); //Method Reference
+        return new BookmarksDTO<>(bookmarkPage);
+    }*/
+  @Transactional(readOnly = true)
+  public BookmarksDTO<?> getBookmarks(Integer page) {
+      int pageNo = page < 1 ? 0 : page - 1;
+      Pageable pageable = PageRequest.of(pageNo, 10, Sort.Direction.DESC, "id");
+      Page<BookmarkDTO> bookmarkPage = repository.findBookmarks(pageable);
+      return new BookmarksDTO<>(bookmarkPage);
+  }
+
+    @Transactional(readOnly = true)
+    public BookmarksDTO<?> searchBookmarks(String query, Integer page) {
+        int pageNo = page < 1 ? 0 : page - 1 ;
+        Pageable pageable = PageRequest.of(pageNo, 10, Sort.Direction.DESC, "id");
+        Page<BookmarkDTO> bookmarkPage = repository.searchBookmarks(query, pageable);
         return new BookmarksDTO<>(bookmarkPage);
     }
-
 }
