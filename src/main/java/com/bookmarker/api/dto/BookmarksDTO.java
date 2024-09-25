@@ -2,6 +2,7 @@ package com.bookmarker.api.dto;
 
 import com.bookmarker.api.domain.Bookmark;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import java.util.List;
 @Setter
 @Getter
 public class BookmarksDTO {
+    @JsonUnwrapped
     private List<Bookmark> data;
     private long totalElements;
     private int totalPages;
