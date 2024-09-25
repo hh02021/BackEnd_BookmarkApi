@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<problem-spring-web.version>0.29.1</problem-spring-web.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -92,6 +93,13 @@
 			<groupId>io.hypersistence</groupId>
 			<artifactId>hypersistence-utils-hibernate-62</artifactId>
 			<version>3.7.3</version>
+		</dependency>
+
+		<!-- 오류만 명확하게 나오기 위한 디펜더시-->
+		<dependency>
+			<groupId>org.zalando</groupId>
+			<artifactId>problem-spring-web-starter</artifactId>
+			<version>${problem-spring-web.version}</version>
 		</dependency>
 
 
